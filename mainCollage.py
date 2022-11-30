@@ -23,7 +23,6 @@ class MainCollage(QtWidgets.QWidget):
         self.keywordLineEdit.setFixedWidth(240)
         self.keywordButton = QtWidgets.QPushButton('Start')
         self.keywordButton.setFixedWidth(128)
-        # self.keywordButton.clicked.connect()
         
         formLayout = QtWidgets.QFormLayout()
         formLayout.setFormAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
@@ -43,10 +42,6 @@ class MainCollage(QtWidgets.QWidget):
         self.setWindowTitle('mock-up')
         self.show()
 
-        someClass = SomeClass()
-
-        someClass.request("REQUEST")
-
         self.setImage()
     
     def setImage(self, path: str = ''):
@@ -63,11 +58,7 @@ class MainCollage(QtWidgets.QWidget):
         
         self.setImage(path)
         self.imageLineEdit.setText(path)
-    
-class SomeClass():
-    def request(self, str):
-        pass
-
+        
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

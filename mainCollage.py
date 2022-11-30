@@ -14,15 +14,15 @@ class MainCollage(QtWidgets.QWidget):
         imagePathLabel = QtWidgets.QLabel('이미지 업로드 :')
         self.imageLineEdit = QtWidgets.QLineEdit(self)
         self.imageLineEdit.setFixedWidth(240)
-        self.imageButton = QtWidgets.QPushButton('Upload', self)
-        self.imageButton.clicked.connect(self.imageButtonClicked)
-        self.imageButton.setFixedWidth(128)
+        imageButton = QtWidgets.QPushButton('Upload', self)
+        imageButton.clicked.connect(self.imageButtonClicked)
+        imageButton.setFixedWidth(128)
 
         keywordLabel = QtWidgets.QLabel('키워드 입력 :', self)
         self.keywordLineEdit = QtWidgets.QLineEdit(self)
         self.keywordLineEdit.setFixedWidth(240)
-        self.keywordButton = QtWidgets.QPushButton('Start')
-        self.keywordButton.setFixedWidth(128)
+        keywordButton = QtWidgets.QPushButton('Start')
+        keywordButton.setFixedWidth(128)
         
         formLayout = QtWidgets.QFormLayout()
         formLayout.setFormAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
@@ -31,12 +31,12 @@ class MainCollage(QtWidgets.QWidget):
         formLayout.addRow(keywordLabel, self.keywordLineEdit)
         formLayout.addWidget(self.keywordButton)
 
-        self.mainLayout = QtWidgets.QVBoxLayout()
-        self.mainLayout.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.mainLayout.addWidget(self.image)
-        self.mainLayout.addLayout(formLayout)
+        mainLayout = QtWidgets.QVBoxLayout()
+        mainLayout.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
+        mainLayout.addWidget(self.image)
+        mainLayout.addLayout(formLayout)
 
-        self.setLayout(self.mainLayout)
+        self.setLayout(mainLayout)
 
         self.setGeometry(300, 300, 500, 250)
         self.setWindowTitle('mock-up')
@@ -58,7 +58,7 @@ class MainCollage(QtWidgets.QWidget):
         
         self.setImage(path)
         self.imageLineEdit.setText(path)
-        
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

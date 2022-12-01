@@ -25,7 +25,6 @@ class Collage(QtWidgets.QWidget):
         self.keywordLineEdit.setFixedWidth(240)
         self.keywordButton = QtWidgets.QPushButton('Start')
         self.keywordButton.setFixedWidth(128)
-        # self.keywordButton.clicked.connect()
         
         # 이미지 갯수 입력
         maxImageNumLabel = QtWidgets.QLabel('이미지 갯수 입력 :', self)
@@ -56,12 +55,6 @@ class Collage(QtWidgets.QWidget):
         self.setGeometry(300, 300, 500, 250)
         self.setWindowTitle('mock-up')
         self.show()
-
-        someClass = SomeClass()
-
-        someClass.request("REQUEST")
-
-        self.setImage()
     
     def setImage(self, path: str = ''):
         self.image.setPixmap(QtGui.QPixmap(path).scaled(256, 256, QtCore.Qt.AspectRatioMode.KeepAspectRatio))
@@ -69,21 +62,9 @@ class Collage(QtWidgets.QWidget):
     def imageButtonClicked(self):
         filter = 'Image(*.jpg *.bmp *.jpeg *.png)'
         path = QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', './', filter)[0]
-
-        # 업로드 취소 시 path가 빈 문자열로 들어옴
-        # 그냥 예외 때려?
+        
         if len(path) == 0:
             return
         
         self.setImage(path)
         self.imageLineEdit.setText(path)
-    
-class SomeClass():
-    def request(self, str):
-        pass
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    collage = Collage()
-    sys.exit(app.exec_())

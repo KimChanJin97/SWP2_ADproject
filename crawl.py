@@ -23,17 +23,17 @@ class Crawl:
         # 폴더명에는 입력한 키워드, 이미지 수 정보를 표시함
         path = 'crawled_img/' + self.word + '_' + self.maxImageNum
 
-        try:
-            # 중복되는 폴더 명이 없다면 생성
-            if not os.path.exists(path):
-                os.makedirs(path)
-            # 중복된다면 문구 출력 후 프로그램 종료
-            else:
-                print('이전에 같은 [검색어, 이미지 수]로 다운로드한 폴더가 존재합니다.')
-                sys.exit(0)
-        except OSError:
-            print('os error')
-            sys.exit(0)
+        # try:
+        #     # 중복되는 폴더 명이 없다면 생성
+        #     if not os.path.exists(path):
+        #         os.makedirs(path)
+        #     # 중복된다면 문구 출력 후 프로그램 종료
+        #     else:
+        #         print('이전에 같은 [검색어, 이미지 수]로 다운로드한 폴더가 존재합니다.')
+        #         sys.exit(0)
+        # except OSError:
+        #     print('os error')
+        #     sys.exit(0)
 
         # flaticon 검색 후 1페이지 당 96개의 이미지 나옴
 
@@ -121,5 +121,5 @@ class Crawl:
         
         # 30개 미만 이미지 갯수 입력했을 때 
 
-
-    
+c = Crawl("dog", "10")
+c.crawl_image()

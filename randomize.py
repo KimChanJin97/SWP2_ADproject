@@ -3,22 +3,19 @@ import random
 from crawl import Crawl
 
 class Randomize(Crawl):
-    def __init__(self):
-        dir_list = []
+    def __init__(self, word, maxImageNum):
+        super().__init__(word, maxImageNum)
         
-    def randomize(self):
+    def randomize_image(self):
         dir_list = []
-        word = self.word
-        maxImageNum = self.maxImageNum
         
         path = 'crawled_img/' + self.word + '_' + self.maxImageNum
-        dir_list = os.listdir(path)
-        random_dir_list = random.sample(dir_list, self.maxImageNum)
+        dir_list = os.listdir(path) # 파일들을 리스트로 
+        print(random.sample(dir_list, k=int(self.maxImageNum)))
         
-r1 = Randomize()
-r1.randomize()
-print(r1)
- 
+r = Randomize("dog", "10")
+r.randomize_image()
+
   
 # import os
 # import random

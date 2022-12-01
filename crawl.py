@@ -44,8 +44,8 @@ class Crawl:
         # 95 / 96 + 1 = 0 + 1 = 1
         # 만약 크롤링하고 싶은 이미지가 100개라면? 100 / 96 = 1
         # 99 / 96 + 1 = 1 + 1 = 2
-        # pages = ((int(self.maxImageNum) - 1) / 96) + 1  # 한 페이지당 표시되는 이미지 수(96)을 참고하여 확인할 페이지 수 계산
-        # imgCount = 0  # 추출 시도 이미지 수
+        pages = ((int(self.maxImageNum) - 1) / 96) + 1  # 한 페이지당 표시되는 이미지 수(96)을 참고하여 확인할 페이지 수 계산
+        imgCount = 0  # 추출 시도 이미지 수
         success = 0  # 추출 성공 이미지 수
         finish = False  # 이미지에 모두 접근했는지 여부
 
@@ -60,7 +60,7 @@ class Crawl:
 
         driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()), options = options)
 
-        for i in range(1, int(pages) + 1):
+        for i in range(1, 2): # 원래 2 대신 int(pages) + 1
             # 첫 페이지의 경우 url이 조금 다름
             if i == 1:
                 driver.get('https://www.flaticon.com/search?word=' + self.word)
@@ -93,7 +93,7 @@ class Crawl:
                     print(src)
                     filename = src.split('/')[-1]  # 이미지 경로에서 맨 뒤 파일명만 추출
                     print(filename)
-                    saveUrl = path + '/' + filename  # 저장 경로 결정
+                    saveUrl = path + '\\' + filename  # 저장 경로 결정
                     print(saveUrl)
 
                     # 파일 저장
@@ -124,10 +124,7 @@ class Crawl:
         path_file_list = []
         
         for i in file_list:
-            path_file_list.append(self.path + i)
+            path_file_list.append(path + i)
         
         return path_file_list
         
-
-# c = Crawl("bird")
-# c.crawl_image("crawled_image")

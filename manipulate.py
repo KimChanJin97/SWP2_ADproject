@@ -1,7 +1,7 @@
 from PIL import Image
 import random as rd
 
-class Manipulation():
+class Manipulate():
     sub_img_lis = []
     # 메인 이미지 설정
     main_img = Image.open('1.jpg')

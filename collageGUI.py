@@ -1,7 +1,6 @@
 import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtGui as QtGui
 import PyQt5.QtCore as QtCore
-import sys
 
 
 class Collage(QtWidgets.QWidget):
@@ -54,7 +53,6 @@ class Collage(QtWidgets.QWidget):
 
         self.setGeometry(300, 300, 500, 250)
         self.setWindowTitle('main')
-        self.show()
     
     def setImage(self, path: str = ''):
         self.__image.setPixmap(QtGui.QPixmap(path).scaled(256, 256, QtCore.Qt.AspectRatioMode.KeepAspectRatio))

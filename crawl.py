@@ -18,10 +18,11 @@ class Crawl:
         # print(type(self.maxImageNum))
 
 
-    def crawl_image(self):
+    def crawl_image(self, path):
         # 프로젝트에 미리 생성해놓은 crawled_img폴더 안에 하위 폴더 생성
         # 폴더명에는 입력한 키워드, 이미지 수 정보를 표시함
-        path = 'crawled_img/' + self.word + '_' + self.maxImageNum
+
+        # path = 'crawled_img/' + self.word + '_' + self.maxImageNum
 
         # try:
         #     # 중복되는 폴더 명이 없다면 생성
@@ -43,8 +44,8 @@ class Crawl:
         # 95 / 96 + 1 = 0 + 1 = 1
         # 만약 크롤링하고 싶은 이미지가 100개라면? 100 / 96 = 1
         # 99 / 96 + 1 = 1 + 1 = 2
-        pages = ((int(self.maxImageNum) - 1) / 96) + 1  # 한 페이지당 표시되는 이미지 수(96)을 참고하여 확인할 페이지 수 계산
-        imgCount = 0  # 추출 시도 이미지 수
+        # pages = ((int(self.maxImageNum) - 1) / 96) + 1  # 한 페이지당 표시되는 이미지 수(96)을 참고하여 확인할 페이지 수 계산
+        # imgCount = 0  # 추출 시도 이미지 수
         success = 0  # 추출 성공 이미지 수
         finish = False  # 이미지에 모두 접근했는지 여부
 
@@ -119,7 +120,14 @@ class Crawl:
 
         print('성공 : ' + str(success) + ', 실패 : ' + str(int(self.maxImageNum) - success))
         
-        # 30개 미만 이미지 갯수 입력했을 때 
+        file_list = os.listdir(path) # 파일들을 리스트로
+        path_file_list = []
+        
+        for i in file_list:
+            path_file_list.append(self.path + i)
+        
+        return path_file_list
+        
 
-c = Crawl("dog", "10")
-c.crawl_image()
+# c = Crawl("bird")
+# c.crawl_image("crawled_image")

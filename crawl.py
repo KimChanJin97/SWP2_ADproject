@@ -124,7 +124,7 @@ class Crawl:
         path_file_list = []
         
         for i in file_list:
-            path_file_list.append(path + i)
+            path_file_list.append(path + "\\" + i)
         
         return path_file_list
         

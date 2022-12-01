@@ -8,8 +8,8 @@ class Collage(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 
-        self.image = QtWidgets.QLabel()
-        self.image.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter | QtCore.Qt.AlignmentFlag.AlignTop)
+        self.__image = QtWidgets.QLabel()
+        self.__image.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter | QtCore.Qt.AlignmentFlag.AlignTop)
 
         # 이미지 업로드
         imagePathLabel = QtWidgets.QLabel('이미지 업로드 :')
@@ -23,15 +23,15 @@ class Collage(QtWidgets.QWidget):
         keywordLabel = QtWidgets.QLabel('키워드 입력 :', self)
         self.keywordLineEdit = QtWidgets.QLineEdit(self)
         self.keywordLineEdit.setFixedWidth(240)
-        self.keywordButton = QtWidgets.QPushButton('Start')
-        self.keywordButton.setFixedWidth(128)
         
         # 이미지 갯수 입력
         maxImageNumLabel = QtWidgets.QLabel('이미지 갯수 입력 :', self)
         self.maxImageNumLineEdit = QtWidgets.QLineEdit(self)
         self.maxImageNumLineEdit.setFixedWidth(240)
-        self.maxImageNumButton = QtWidgets.QPushButton('Start')
-        self.maxImageNumButton.setFixedWidth(128)
+
+        # 콜라주 생성
+        self.startButton = QtWidgets.QPushButton('Start')
+        self.startButton.setFixedWidth(128)
         
         formLayout = QtWidgets.QFormLayout()
         formLayout.setFormAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
@@ -40,24 +40,24 @@ class Collage(QtWidgets.QWidget):
         formLayout.addWidget(self.imageButton)
         # 키워드 입력
         formLayout.addRow(keywordLabel, self.keywordLineEdit)
-        formLayout.addWidget(self.keywordButton)
         # 이미지 갯수 입력
         formLayout.addRow(maxImageNumLabel, self.maxImageNumLineEdit)
-        formLayout.addWidget(self.maxImageNumButton)
+        # 콜라주 생성
+        formLayout.addWidget(self.startButton)
 
         self.mainLayout = QtWidgets.QVBoxLayout()
         self.mainLayout.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.mainLayout.addWidget(self.image)
+        self.mainLayout.addWidget(self.__image)
         self.mainLayout.addLayout(formLayout)
 
         self.setLayout(self.mainLayout)
 
         self.setGeometry(300, 300, 500, 250)
-        self.setWindowTitle('mock-up')
+        self.setWindowTitle('main')
         self.show()
     
     def setImage(self, path: str = ''):
-        self.image.setPixmap(QtGui.QPixmap(path).scaled(256, 256, QtCore.Qt.AspectRatioMode.KeepAspectRatio))
+        self.__image.setPixmap(QtGui.QPixmap(path).scaled(256, 256, QtCore.Qt.AspectRatioMode.KeepAspectRatio))
 
     def imageButtonClicked(self):
         filter = 'Image(*.jpg *.bmp *.jpeg *.png)'

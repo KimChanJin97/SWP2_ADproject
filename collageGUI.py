@@ -2,8 +2,7 @@ import PyQt5.QtWidgets as QtWidgets
 import PyQt5.QtGui as QtGui
 import PyQt5.QtCore as QtCore
 
-
-class Collage(QtWidgets.QWidget):
+class InputWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
 

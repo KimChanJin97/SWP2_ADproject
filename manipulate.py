@@ -6,25 +6,36 @@ class Manipulation():
         self.mainImg = Image.open(mainImg)
         self.subImgList = subImgList
         self.resizing_subImg_List = []
-        self.resizing()
+        self.mainResizing()
+        self.subResizing()
         self.manipulat()
         self.saveImg()
         self.showImg()
-
-
-    def resizing(self):
+        
+    def subResizing(self):
         for i in range(len(self.subImgList)):
             subImg = Image.open(str(self.subImgList[i]))
             resizeSubImg = subImg.resize((60, 60))
             self.resizing_subImg_List.append(resizeSubImg)
+    
+    def mainResizing(self):
+        size = 500
+        if self.mainImg.size[0] > self.mainImg.size[1]:
+            tempsize = self.mainImg.size[0]
+        else:
+            tempsize = self.mainImg.size[1]
+        
+        percent = size/tempsize
+        self.wsize = int(self.mainImg.size[0]*percent)
+        self.hsize = int(self.mainImg.size[1]*percent)
 
-        print(self.resizing_subImg_List)
+        self.mainImg = self.mainImg.resize((self.wsize, self.hsize))
 
 
     def manipulat(self):
         for i in range(len(self.resizing_subImg_List)):
-            x = rd.randint(0, 500)
-            y = rd.randint(0, 400)
+            x = rd.randint(0, self.wsize)
+            y = rd.randint(0, self.hsize)
             self.mainImg.paste(self.resizing_subImg_List[i], (x, y), self.resizing_subImg_List[i])
 
     def saveImg(self):
@@ -33,8 +44,3 @@ class Manipulation():
 
     def showImg(self):
         self.mainImg.show()
-
-if __name__ == '__main__':
-    a = "1.jpg"
-    b = ['0.png', '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png']
-    c = Manipulation(a, b)

@@ -1,7 +1,7 @@
 from PIL import Image
 import random as rd
 
-class Manipulation():
+class manipulate():
     def __init__(self, mainImg, subImgList):
         self.mainImg = Image.open(mainImg)
         self.subImgList = subImgList

@@ -1,16 +1,16 @@
 import unittest
 import os
-from manipulate import manipulation
+from manipulate import manipulate
 from PIL import Image
 import random as rd
 
-class testManipulation(unittest.TestCase):
+class testManipulate(unittest.TestCase):
     def setUp(self):
         main_testimg1 = '1.jpg'
-        main_testimg2 = '3.jpg'
-        sub_testimg = ['4.png']
-        self.m1 = Manipulation(main_testimg1, sub_testimg)
-        self.m2 = Manipulation(main_testimg2, sub_testimg)
+        main_testimg2 = '2.jpg'
+        sub_testimg = ['3.png']
+        self.m1 = manipulate(main_testimg1, sub_testimg)
+        self.m2 = manipulate(main_testimg2, sub_testimg)
 
     def testMainResizing1(self):
         wsize = self.m1.mainImg.size[0]

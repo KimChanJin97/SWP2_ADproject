@@ -63,11 +63,11 @@ class Crawl:
         for i in range(1, 2): # 원래 2 대신 int(pages) + 1
             # 첫 페이지의 경우 url이 조금 다름
             if i == 1:
-                driver.get('https://www.flaticon.com/search?word=' + self.word)
+                driver.get('https://www.flaticon.com/search?word=' + self.word + "&color=color")
                 sleep(1) # 웹 페이지 접근 후 1초동안 로드를 기다림
             # 첫 페이지 이후의 경우 url은 다음과 같음
             else:
-                driver.get('https://www.flaticon.com/search/' + str(i) + '?word=' + self.word)
+                driver.get('https://www.flaticon.com/search/' + str(i) + '?word=' + self.word + "&color=color")
                 
             # 크롤링이 가능하도록 html코드 가공
             html = driver.page_source
@@ -127,4 +127,3 @@ class Crawl:
             path_file_list.append(path + "\\" + i)
         
         return path_file_list
-        

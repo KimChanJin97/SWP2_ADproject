@@ -34,8 +34,8 @@ class manipulate():
 
     def manipulat(self):
         for i in range(len(self.resizing_subImg_List)):
-            x = rd.randint(0, self.wsize)
-            y = rd.randint(0, self.hsize)
+            x = rd.randint(0, (self.wsize-50))
+            y = rd.randint(0, (self.hsize-50))
             self.mainImg.paste(self.resizing_subImg_List[i], (x, y), self.resizing_subImg_List[i])
 
     def saveImg(self):

@@ -19,6 +19,6 @@ app = QtWidgets.QApplication(sys.argv)
 
 mainWindow = InputWindow()
 mainWindow.show()
-mainWindow.startButton.clicked.connect(lambda: generateCollage(mainWindow.imageLineEdit.text(), mainWindow.keywordLineEdit.text(), int(mainWindow.maxImageNumLineEdit.text())))
+mainWindow.startButton.clicked.connect(lambda: generateCollage(mainWindow.imageLineEdit.text(), mainWindow.keywordLineEdit.text(), int(mainWindow.maxImageNumLineEdit.currentText())))
 
 sys.exit(app.exec_())

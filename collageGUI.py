@@ -24,9 +24,10 @@ class InputWindow(QtWidgets.QWidget):
         
         # 이미지 갯수 입력
         maxImageNumLabel = QtWidgets.QLabel('이미지 갯수 입력 :', self)
-        self.maxImageNumLineEdit = QtWidgets.QLineEdit(self)
+        self.maxImageNumLineEdit = QtWidgets.QComboBox(self)
         self.maxImageNumLineEdit.setFixedWidth(240)
-        self.maxImageNumLineEdit.setValidator(QtGui.QIntValidator(0, 10))
+        for i in range(1, 30):
+            self.maxImageNumLineEdit.addItem(f'{i}')
 
         # 콜라주 생성
         self.startButton = QtWidgets.QPushButton('Start')
